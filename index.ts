@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config();
 const express = require('express');
 const { resolve } = require('path');
 
-const connectionPort = process.env.PORT || 3002;
+const connectionPort: string = process.env.PORT || '3002';
 const app = express();
-const routes = require('./routes');
+const routes: NodeRequire = require('./routes.ts');
 
 app.use(express.urlencoded({ extended: true }));
 

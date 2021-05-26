@@ -6,3 +6,4 @@ const { appController } = require('./controllers');
 router.get('/', appController.getHome);
 
 module.exports = router;
+export {};
