@@ -1,0 +1,19 @@
+{
+  "name": "sheets-api",
+  "version": "1.0.0",
+  "description": "A consumer service from google api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "daniel_santos",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^39.2.0",
+    "express": "^4.17.1",
+    "ejs": "^3.1.6"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
