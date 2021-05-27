@@ -10,7 +10,6 @@
   "author": "daniel_santos",
   "license": "ISC",
   "dependencies": {
-    "@types/gapi": "0.0.39",
     "@types/node": "^15.6.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",

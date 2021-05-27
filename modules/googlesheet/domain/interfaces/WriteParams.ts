@@ -1,7 +1,8 @@
 interface WriteParams { 
-  readonly spreadsheetId: string; 
-  readonly range: string;
-  readonly value: string;
+  spreadsheetId: string; 
+  range: string;
+  value: string;
+  resolve: (param: WriteValueModel) => void;
 }
 
 type WriteLine = string[];

@@ -1,13 +1,8 @@
-import {
-  ReadParams,
-  ReadResponse,
-  WriteParams,
-  WriteValueModel,
-} from '../domain/interfaces';
+import { ReadParams, WriteParams } from '../domain/interfaces';
 
 interface ISpreadsheet {
-  read: (params: ReadParams) => Promise<ReadResponse>;
-  write: (params: WriteParams) => Promise<WriteValueModel>;
+  read: (params: ReadParams) => void;
+  write: (params: WriteParams) => void;
 }
 
 export { ISpreadsheet };

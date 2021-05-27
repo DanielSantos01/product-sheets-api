@@ -1,6 +1,9 @@
+import { ReadResponse } from './ReadResponse';
+
 interface ReadParams { 
-  readonly spreadsheetId: string; 
-  readonly range: string;
+  spreadsheetId: string; 
+  range: string;
+  resolve: (param: ReadResponse) => void;
 }
 
 export { ReadParams };

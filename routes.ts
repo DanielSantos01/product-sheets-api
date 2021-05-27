@@ -1,10 +1,9 @@
-import { appController } from './controllers';
-const express = require('express');
-const router = express.Router();
+const controller =  require('./controllers');
+const expresss = require('express');
+const router = expresss.Router();
 
+router.get('/', controller.getHome);
+router.get('/query', controller.query);
+router.post('/put', controller.put);
 
-router.get('/', appController.getHome);
-router.get('/query', appController.query);
-router.post('/put', appController.put);
-
-export default router;
+module.exports = router;

@@ -1,3 +1,3 @@
-import appController from './appController';
+const appController = require('./appController');
 
-export { appController };
+module.exports = appController;

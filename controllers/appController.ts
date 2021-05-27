@@ -5,28 +5,29 @@ const getHome = (req: any, res: any): void => {
   res.render('index');
 };
 
-const query = async (req: any, res: any): Promise<void> => {
+const query = (req: any, res: any) => {
   const { spreadsheetId, range } = req.body;
   try {
-    const response: ReadResponse = await SpreadsheetHelper.read({ spreadsheetId, range });
-    res.send(response);
+    const resolve = (response: ReadResponse) => res.send(response);
+    SpreadsheetHelper.read({ spreadsheetId, range, resolve });
   } catch (err) {
     res.send('failed to read spreadsheet...');
   }
 };
 
-const put = async (req: any, res: any): Promise<void> => {
+const put = (req: any, res: any) => {
   const { spreadsheetId, range, value } = req.body;
   try {
-    const response: WriteValueModel =await SpreadsheetHelper.write({
+    const resolve = (response: WriteValueModel) => res.send(response);
+    SpreadsheetHelper.write({
       spreadsheetId,
       range,
       value,
+      resolve,
     });
-    res.send(response);
   } catch (err) {
-    res.send('failed to write spreadsheet...');
+    res.send(err);
   }
 };
 
-export default { getHome, query, put };
+module.exports = { getHome, query, put };
