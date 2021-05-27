@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const { resolve } = require('path');
+import routes from './routes';
 
 const connectionPort: string = process.env.PORT || '3002';
 const app = express();
-const routes: NodeRequire = require('./routes.ts');
 
 app.use(express.urlencoded({ extended: true }));
 
