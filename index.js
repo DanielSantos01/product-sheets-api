@@ -3,7 +3,7 @@ const express = require('express');
 const { resolve } = require('path');
 const routes = require('./routes');
 
-const connectionPort: string = process.env.PORT || '3002';
+const connectionPort = process.env.PORT || '3002';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));

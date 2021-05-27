@@ -1,24 +1,23 @@
-import {  ReadResponse, WriteValueModel } from '../modules/googlesheet/domain/interfaces';
-import SpreadsheetHelper from '../modules/googlesheet/adapters/SpreadsheetHelper';
+const SpreadsheetHelper = require('../modules/googlesheet/adapters/SpreadsheetHelper');
 
-const getHome = (req: any, res: any): void => {
+const getHome = (req, res) => {
   res.render('index');
 };
 
-const query = (req: any, res: any) => {
+const query = (req, res) => {
   const { spreadsheetId, range } = req.body;
   try {
-    const resolve = (response: ReadResponse) => res.send(response);
+    const resolve = (response) => res.send(response);
     SpreadsheetHelper.read({ spreadsheetId, range, resolve });
   } catch (err) {
     res.send('failed to read spreadsheet...');
   }
 };
 
-const put = (req: any, res: any) => {
+const put = (req, res) => {
   const { spreadsheetId, range, value } = req.body;
   try {
-    const resolve = (response: WriteValueModel) => res.send(response);
+    const resolve = (response) => res.send(response);
     SpreadsheetHelper.write({
       spreadsheetId,
       range,
