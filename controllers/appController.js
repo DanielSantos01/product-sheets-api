@@ -25,7 +25,7 @@ const put = (req, res) => {
       resolve,
     });
   } catch (err) {
-    res.send(err);
+    res.send('failed to write spreadsheet...');
   }
 };
 
