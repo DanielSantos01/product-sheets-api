@@ -9,27 +9,31 @@ class Spreadsheet {
      this.write = this.write.bind(this);
    }
 
-   read(readProps) {
-     const { resolve, ...rest} = readProps;
-     this.googleSheet.spreadsheets.values
-       .get(rest)
-       .then(res => resolve(res.data.values || []));
+   async read(readProps) {
+     try {
+       const response = await this.googleSheet.spreadsheets.values.get(readProps);
+       return response.data.values;
+     }catch(err) {
+       return 'failed to read spreadsheet. Verify your query params';
+     }
    }
 
-   write(writeProps) {
-     const { range, spreadsheetId, value, resolve } = writeProps;
+   async write(writeProps) {
+     const { range, spreadsheetId, value } = writeProps;
      const values = [ [ value ] ];
-     this.googleSheet.spreadsheets.values.update({
-       spreadsheetId,
-       range,
-       valueInputOption: 'USER_ENTERED',
-       resource: { values },
-     })
-       .then(res => {
-         const isDone = res.status === 200;
-         const finalResponse = isDone ? res.config.data.values : [];
-         resolve(finalResponse);
-       });
+     try {
+      const response = await this.googleSheet.spreadsheets.values.update({
+        spreadsheetId,
+        range,
+        valueInputOption: 'USER_ENTERED',
+        resource: { values },
+      });
+
+      const isDone = response.status === 200;
+      return isDone ? response.config.data.values : [];
+     }catch (err) {
+      return 'failed to write spreadsheet. Verify your body params'
+     }
    }
 }
 
