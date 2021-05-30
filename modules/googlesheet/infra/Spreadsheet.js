@@ -1,14 +1,23 @@
-// TODO - Catches
+const { GeneratedAPIs } = require('googleapis/build/src/apis');
 
 class Spreadsheet {
    googleSheet;
 
+   /**
+    * Class constructor that received a GoogleSheetApi service by dependency injection
+    * @param {GeneratedAPIs.sheets} googleSheet 
+    */
    constructor(googleSheet) {
      this.googleSheet = googleSheet;
      this.read = this.read.bind(this);
      this.write = this.write.bind(this);
    }
 
+   /**
+    * @param {@type {googlesheetId, range}} readProps 
+    * @returns The line(s) read from the file in Array notation, or an advertise for
+    * the case of fail.
+    */
    async read(readProps) {
      try {
        const response = await this.googleSheet.spreadsheets.values.get(readProps);
@@ -18,6 +27,12 @@ class Spreadsheet {
      }
    }
 
+   /**
+    * 
+    * @param {@type {googlesheetId, range, value}} writeProps 
+    * @returns The same data recentely written in document (as a callback to
+    * describe the success of the action), or an advertisement for the case of fail
+    */
    async write(writeProps) {
      const { range, spreadsheetId, value } = writeProps;
      const values = [ [ value ] ];

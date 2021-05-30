@@ -1,3 +1,10 @@
+/**
+ * Server seyup, defining the connection port that will be listening
+ * view engine to render a simple presentation in the main route and the
+ * routes that will be used as endpoints.
+ * Main route: https://product-sheets-api.herokuapp.com/
+ */
+
 require('dotenv').config();
 const express = require('express');
 const { resolve } = require('path');
