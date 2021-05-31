@@ -35,7 +35,7 @@ class Spreadsheet {
     */
    async write(writeProps) {
      const { range, spreadsheetId, value } = writeProps;
-     const values = [ [ value ] ];
+     const values = [ value.split(',') ];
      try {
       const response = await this.googleSheet.spreadsheets.values.update({
         spreadsheetId,
